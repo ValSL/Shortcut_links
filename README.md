@@ -24,14 +24,12 @@ pip install requirements.txt
 
 ## Run
 
-For the first time:
+For the first time don't forget:
 ```
 python manage.py makemigrations
 python manage.py migrate
 ```
 
 ```angular2
-python manage.py makemigrations
-python manage.py migrate
 python manage.py runserver
 ```
