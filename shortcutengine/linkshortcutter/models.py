@@ -17,3 +17,6 @@ class CuttedUrl(models.Model):
 
     def __str__(self):
         return f'id: {self.id} | code: {self.code}'
+
+    class Meta:
+        ordering = ['clicks']
