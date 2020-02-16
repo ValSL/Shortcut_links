@@ -13,11 +13,13 @@ def index(request):
     if request.method == 'POST':
         form = URLForm(request.POST)
         if form.is_valid():
-            real_url = form.cleaned_data['url']
-            if form.cleaned_data['code']:
-                new_cut = CuttedUrl.objects.create(real_url=real_url, code=form.cleaned_data['code'])
+            real_url = form.cleaned_data.get('url')
+            if form.cleaned_data.get('code'):
+                new_cut = CuttedUrl.objects.create(real_url=real_url, code=form.cleaned_data.get('code'))
                 return redirect(reverse('index_url'))
-            new_cut = CuttedUrl.objects.create(real_url=real_url)
+            else:
+                new_cut = CuttedUrl.objects.create(real_url=real_url)
+
             return redirect(reverse('index_url'))
         else:
             return render(request, 'linkshortcutter/index.html', context={'form': form, 'urls': urls})
